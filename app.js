@@ -1,13 +1,14 @@
 var app = angular.module('tttApp', [
-  'ui.router'])
+  'ui.router',
+  'mainCtrl']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise('/');
   
-  $stateProvider.state('/',{
+  $stateProvider.state('/', {
     url: '/',
-    templateUrl: ''
+    templateUrl: 'boardView.html'
   });
 
 });
