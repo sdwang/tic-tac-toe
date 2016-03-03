@@ -1,6 +1,6 @@
 <div ng-controller="mainController">
   <button ng-click="newGame()">New Game</button>
-  <div class="board" ng-repeat="space in spaces">
-      <div data-row={{space.row}} data-column={{space.column}}>{{space.row}}</div>
+  <div class="board">
+      <div class="space" ng-repeat="space in spaces" data-row={{space.row}} data-column={{space.column}}></div>
   </div>
 </div>
