@@ -67,4 +67,21 @@ Board View
   border-style: solid;
   border-width: 3px;
   display: inline-block;
+  margin-top: -3px;
+}
+
+.space[data-row='0'] {
+  border-top-style: none;
+}
+
+.space[data-row='2'] {
+  border-bottom-style: none;
+}
+
+.space[data-column='0'] {
+  border-left-style: none;
+}
+
+.space[data-column='2'] {
+  border-right-style: none;
 }
