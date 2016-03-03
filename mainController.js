@@ -28,6 +28,10 @@ angular.module('mainCtrl', [])
       //TODO
     };
 
+    $scope.clickSpace = function($event) {
+      console.log($event.currentTarget);
+    };
+
     $scope.determineSpaces(3);
     console.log($scope.spaces);
     console.log($scope.virtualBoard);
