@@ -1,6 +1,8 @@
 angular.module('mainCtrl', [])
   .controller('mainController', ['$scope', function($scope) {
   
+    $scope.turn = 'x';
+
     //An array of objects. Each object pertains to a space 
     //on the board, containing the row and column property
     $scope.spaces = [];
@@ -28,8 +30,17 @@ angular.module('mainCtrl', [])
       //TODO
     };
 
-    $scope.clickSpace = function($event) {
-      console.log($event.currentTarget);
+    $scope.clickSpace = function($event, row, column) {
+      console.log('click space called');
+      //Change class to x or o
+      //update virtual board
+      //Check for win scenario
+      //Check if board is filled, if so then go to tie
+      var space = $event.currentTarget;
+      //$(space).attr('ng-click', false);
+      if($scope.virtualBoard[row][column] === 0) {
+        
+      }
     };
 
     $scope.determineSpaces(3);
