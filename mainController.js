@@ -31,15 +31,18 @@ angular.module('mainCtrl', [])
     };
 
     $scope.clickSpace = function($event, row, column) {
-      console.log('click space called');
       //Change class to x or o
       //update virtual board
       //Check for win scenario
       //Check if board is filled, if so then go to tie
-      var space = $event.currentTarget;
-      //$(space).attr('ng-click', false);
       if($scope.virtualBoard[row][column] === 0) {
-        
+        if($scope.turn === 'x') {
+          $scope.virtualBoard[row][column] = -1;
+        } else {
+          $scope.virtualBoard[row][column] = 1;
+        }
+        var space = $event.currentTarget;
+        console.log('click space logic reached');
       }
     };
 
