@@ -57,10 +57,13 @@ Board View
 */
 
 .board {
+  display: inline-block;
   width: 400px;
   height: 400px;
   position: relative;
-  left: 25%;
+  left: 50%;
+  margin-left: -225px;
+  top: 100px;
 }
 
 .space {
@@ -105,5 +108,37 @@ Text
 }
 
 .title {
-  
+  display: inline-block;
+  font-size: 50px;
+  position: relative;
+  left: 50%;
+  margin-left: -114px;
+  top: 50px;
+}
+
+/*
+Buttons
+*/
+
+button {
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  position: relative;
+  padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  float: left;
+  border-radius: 10px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 25px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #3498DB;
+  border-bottom: 5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+}
+
+button:active {
+  transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  border-bottom: 1px solid;
 }
