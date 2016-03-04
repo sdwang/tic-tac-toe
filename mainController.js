@@ -1,6 +1,7 @@
 angular.module('mainCtrl', [])
   .controller('mainController', ['$scope', function($scope) {
   
+    //Current player's turn
     $scope.turn = 'x';
 
     //An array of objects. Each object pertains to a space 
@@ -9,13 +10,15 @@ angular.module('mainCtrl', [])
 
     //An array to keep track of marked spaces.
     //0 for unmarked, -1 for X's, and 1 for O's
-    $scope.virtualBoard = [];
+    $scope.board = [];
 
+    //Counter to track number of turns
     $scope.turns = 0;
 
+    //n x n board size
     $scope.boardSize = 3;
 
-    //Populate spaces for both the spaces array and virtualBoard array
+    //Populate spaces for both the spaces array and board array
     $scope.determineSpaces = function(n) {
       for(var row = 0; row < n; row++) {
         var currentRow = [];
@@ -26,7 +29,7 @@ angular.module('mainCtrl', [])
           });
           currentRow.push(0);
         }
-        $scope.virtualBoard.push(currentRow);
+        $scope.board.push(currentRow);
       }
     };
 
@@ -35,13 +38,13 @@ angular.module('mainCtrl', [])
     };
 
     $scope.checkWin = function(row, column) {
-      if($scope.virtualBoard[row][0] === $scope.virtualBoard[row][1] && $scope.virtualBoard[row][1] === $scope.virtualBoard[row][2]) {
+      if($scope.board[row][0] === $scope.board[row][1] && $scope.board[row][1] === $scope.board[row][2]) {
         return true;
-      } else if($scope.virtualBoard[0][column] === $scope.virtualBoard[1][column] && $scope.virtualBoard[1][column] === $scope.virtualBoard[2][column]) {
+      } else if($scope.board[0][column] === $scope.board[1][column] && $scope.board[1][column] === $scope.board[2][column]) {
         return true;
-      } else if($scope.virtualBoard[0][0] === $scope.virtualBoard[1][1] && $scope.virtualBoard[1][1] === $scope.virtualBoard[2][2]) {
+      } else if($scope.board[0][0] === $scope.board[1][1] && $scope.board[1][1] === $scope.board[2][2]) {
         return true;
-      } else if($scope.virtualBoard[0][2] === $scope.virtualBoard[1][1] && $scope.virtualBoard[1][1] === $scope.virtualBoard[2][0]) {
+      } else if($scope.board[0][2] === $scope.board[1][1] && $scope.board[1][1] === $scope.board[2][0]) {
         return true;
       }
 
@@ -59,29 +62,25 @@ angular.module('mainCtrl', [])
         $('.end-game-message').text('Crosses win!');
       }
       $scope.clickSpace = null;
-      console.log($scope.virtualBoard);
+      console.log($scope.board);
     };
 
     $scope.tieScenario = function() {
-      console.log('tie!');
+      $('.end-game-message').text('Tie!');
     };
 
     $scope.clickSpace = function($event, row, column) {
-      //Change class to x or o
-      //update virtual board
-      //Check for win scenario
-      //Check if board is filled, if so then go to tie
-      if($scope.virtualBoard[row][column] === 0) {
+      if($scope.board[row][column] === 0) {
         $scope.turns++;
         
         var space = $event.currentTarget;
         
         if($scope.turn === 'x') {
-          $scope.virtualBoard[row][column] = -1;
+          $scope.board[row][column] = -1;
           $(space).addClass('x');
           $scope.turn = 'o';
         } else {
-          $scope.virtualBoard[row][column] = 1;
+          $scope.board[row][column] = 1;
           $(space).addClass('o');
           $scope.turn = 'x';
         }
@@ -96,13 +95,9 @@ angular.module('mainCtrl', [])
             $scope.tieScenario();
           }
         }
-
-        console.log('click space logic reached');
       }
     };
 
     $scope.determineSpaces($scope.boardSize);
-    console.log($scope.spaces);
-    console.log($scope.virtualBoard);
 
   }]);
