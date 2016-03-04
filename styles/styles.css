@@ -95,3 +95,15 @@ Board View
 .o {
   background-image: url('../images/nought.png');
 }
+
+/*
+Text
+*/
+
+.text {
+  font-family: 'Indie Flower', cursive;
+}
+
+.title {
+  
+}
