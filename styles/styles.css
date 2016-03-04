@@ -58,12 +58,13 @@ Board View
 
 .board {
   display: inline-block;
-  width: 400px;
-  height: 400px;
+  width: 325px;
+  height: 325px;
   position: relative;
   left: 50%;
-  margin-left: -225px;
+  margin-left: -265px;
   top: 100px;
+  float: left;
 }
 
 .space {
@@ -116,20 +117,32 @@ Text
   top: 50px;
 }
 
+.end-game-message {
+  position: relative;
+  top: 200px;
+  left: -50px;
+  float: left;
+  font-size: 30px;
+}
+
 /*
 Buttons
 */
 
 button {
+  top: 100px;
+  left: 12%;
+  height: 50px;
+  width: 100px;
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
   position: relative;
-  padding: 10px 40px;
+  padding: 2px 2px;
   margin: 0px 10px 10px 0px;
   float: left;
   border-radius: 10px;
   font-family: 'Indie Flower', cursive;
-  font-size: 25px;
+  font-size: 16px;
   color: #FFF;
   text-decoration: none;
   background-color: #3498DB;
