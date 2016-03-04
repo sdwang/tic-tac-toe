@@ -35,15 +35,26 @@ angular.module('mainCtrl', [])
     };
 
     $scope.checkWin = function(row, column) {
-      console.log('checkWin called');
+      if($scope.virtualBoard[row][0] === $scope.virtualBoard[row][1] && $scope.virtualBoard[row][1] === $scope.virtualBoard[row][2]) {
+        return true;
+      } else if($scope.virtualBoard[0][column] === $scope.virtualBoard[1][column] && $scope.virtualBoard[1][column] === $scope.virtualBoard[2][column]) {
+        return true;
+      } else if($scope.virtualBoard[0][0] === $scope.virtualBoard[1][1] && $scope.virtualBoard[1][1] === $scope.virtualBoard[2][2]) {
+        return true;
+      } else if($scope.virtualBoard[0][2] === $scope.virtualBoard[1][1] && $scope.virtualBoard[1][1] === $scope.virtualBoard[2][0]) {
+        return true;
+      }
+
+      return false;
     };
 
     $scope.winScenario = function() {
-
+      console.log('win!');
+      console.log($scope.virtualBoard);
     };
 
     $scope.tieScenario = function() {
-
+      console.log('tie!');
     };
 
     $scope.clickSpace = function($event, row, column) {
@@ -71,7 +82,7 @@ angular.module('mainCtrl', [])
           //Check if a win occured
           if($scope.checkWin(row, column)) {
             $scope.winScenario();
-            //Check if 
+            //Check if no more turns to be made
           } else if($scope.turns === $scope.boardSize * $scope.boardSize) {
             $scope.tieScenario();
           }
