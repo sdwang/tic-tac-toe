@@ -1,5 +1,5 @@
 angular.module('mainCtrl', [])
-  .controller('mainController', ['$scope', function($scope) {
+  .controller('mainController', ['$scope', '$state', function($scope, $state) {
   
     //Current player's turn
     $scope.turn = 'x';
@@ -34,7 +34,7 @@ angular.module('mainCtrl', [])
     };
 
     $scope.newGame = function() {
-      //TODO
+      $state.go('/', null, {reload: true});
     };
 
     $scope.checkWin = function(row, column) {
@@ -53,16 +53,11 @@ angular.module('mainCtrl', [])
 
     $scope.winScenario = function() {
       if($scope.turn === 'x') {
-        console.log('o wins')
-        console.log($('end-game-message'))
         $('.end-game-message').text('Noughts win!');
       } else {
-        console.log('x wins');
-        console.log($('end-game-message'))
         $('.end-game-message').text('Crosses win!');
       }
       $scope.clickSpace = null;
-      console.log($scope.board);
     };
 
     $scope.tieScenario = function() {
