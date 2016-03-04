@@ -49,7 +49,11 @@ angular.module('mainCtrl', [])
     };
 
     $scope.winScenario = function() {
-      console.log('win!');
+      if($scope.turn === 'x') {
+        console.log('o wins!');
+      } else {
+        console.log('x wins!');
+      }
       console.log($scope.virtualBoard);
     };
 
